@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="spring-context-4.3.8.RELEASE">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Desktop/Р/софт/библиотеки/spring-context-4.3.8.RELEASE.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/Р/софт/библиотеки/spring-core-4.3.8.RELEASE.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

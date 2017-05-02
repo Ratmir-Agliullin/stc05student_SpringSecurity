@@ -1,0 +1,29 @@
+<!--suppress SpringModelInspection, RequiredBeanTypeInspection -->
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+                 http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                 http://www.springframework.org/schema/security
+                 http://www.springframework.org/schema/security/spring-security-3.0.xsd">
+<http access-denied-page="/edit.jsp">
+        <intercept-url pattern="/index*" access="ROLE_USER,ROLE_ANONYMOUS"/>
+        <intercept-url pattern="/add*" access="hasRole('ROLE_USER')"/>
+
+        <remember-me/>
+    </http>
+
+    <beans:import resource="spring-database.xml"/>
+
+
+    <authentication-manager>
+        <authentication-provider>
+            <jdbc-user-service data-source-ref="dataSource"
+                               users-by-username-query="select user_name,user_pass
+      	                                           from users where user_name = ?"
+                               authorities-by-username-query="select u.username, au.authority
+      	                                                 from users u, authorities au
+       	                                                where u.id = au.user_id and u.username = ?" />
+        </authentication-provider>
+    </authentication-manager>
+</beans:beans>

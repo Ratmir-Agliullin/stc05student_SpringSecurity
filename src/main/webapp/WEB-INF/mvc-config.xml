@@ -1,0 +1,8 @@
+<interceptors>
+    <interceptor>
+        <mapping path="/main.Controllers/*"/>
+        <!--need to use ' /** ' not ' /* ' if you want to intercept all requests.-->
+        <!--<mvc:mapping path="/**"/>-->
+        <bean class="main.Controllers.HelloServlet"/>
+    </interceptor>
+</interceptors>

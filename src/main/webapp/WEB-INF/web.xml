@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+         version="2.4">
+
+
+  <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+    <servlet-name> HelloServlet</servlet-name>
+    <servlet-class>main.Controllers.HelloServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HelloServlet</servlet-name>
+    <url-pattern>/Hello</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  <servlet-name>LoginServlet</servlet-name>
+  <servlet-class>main.Controllers.LoginServlet</servlet-class>
+</servlet>
+<listener>
+  <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+</listener>
+  <context-param>
+    <param-name>context.Config.Location</param-name>
+    <param-value>main.webapp.beans.xml</param-value>
+  </context-param>
+<listener>
+  <listener-class>main.Controllers.Listeners.MySessionListener</listener-class>
+</listener>
+  <filter>
+    <filter-name>WhiteFilter</filter-name>
+    <filter-class>main.Controllers.filters.WhiteList</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>WhiteFilter</filter-name>
+    <url-pattern>/List</url-pattern>
+  </filter-mapping>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ListServlet</servlet-name>
+    <servlet-class>main.Controllers.ListController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListServlet</servlet-name>
+    <url-pattern>/List</url-pattern>
+  </servlet-mapping>
+  <filter>
+    <filter-name>springSecurityFilterChain</filter-name>
+    <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>springSecurityFilterChain</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+</web-app>
